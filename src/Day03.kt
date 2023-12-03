@@ -51,12 +51,12 @@ fun main() {
 }
 
 fun checkSymbol(input: List<String>, lineNr: Int, sx: Int, ex: Int) : Boolean {
-    var foundSymbol = false;
+    var foundSymbol = false
     lineLoop@ for (y in IntRange(max(0, lineNr - 1), min(input.size - 1, lineNr + 1))) {
         for (x in IntRange(max(0, sx - 1), min(input[y].length - 1, ex + 1))) {
             val c = input[y][x]
             if (!c.isDigit() && c != '.') {
-                foundSymbol = true;
+                foundSymbol = true
                 break@lineLoop
             }
         }
