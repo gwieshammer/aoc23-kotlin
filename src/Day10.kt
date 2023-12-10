@@ -7,6 +7,7 @@ enum class Direction(val canGo: (current: Point, map: PlayMap) -> Boolean, val t
     SOUTH({ current, map -> current.y < map.mapHeight - 1}, { current -> Point(current.x, current.y + 1)}, { NORTH } ),
     WEST({ current, _ -> current.x > 0}, { current -> Point(current.x - 1, current.y) }, { EAST });
 }
+
 enum class TileType(
     val char: Char,
     val connects : List<Direction>
@@ -28,6 +29,7 @@ enum class TileType(
 }
 
 data class Point(val x: Int, val y: Int)
+
 data class Line(val start: Point, val end: Point) {
     fun intersectsWith(other: Line) : Boolean {
         return Line2D.linesIntersect(start.x.toDouble(), start.y.toDouble(),
@@ -37,6 +39,7 @@ data class Line(val start: Point, val end: Point) {
             )
     }
 }
+
 data class Route(
     val positions : MutableList<Point> = mutableListOf(),
     var isLoop : Boolean = false
@@ -138,6 +141,7 @@ class PlayMap(input: List<String>) {
         return countTilesInside
     }
 }
+
 fun main() {
     fun part1(input: List<String>): Int {
         val map = PlayMap(input)
